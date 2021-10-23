@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8900/eureka
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: helloWord
+          uri: lb://SPRING-CLOUD-PROVIDER
+          predicates:
+            - Path=/hello/**
